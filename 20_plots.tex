@@ -1,0 +1,164 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath,amscd}
+\usepackage[symbol]{footmisc}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[english]{babel}
+\linespread{1.25}
+\usepackage{listings}
+\lstset{
+basicstyle=\small\ttfamily,
+columns=flexible,
+breaklines=true
+}
+
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\D}{D}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\T}{\text{\scriptsize T}}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\begin{document}
+
+\section{Type $(2,0)$ geometry}
+
+\subsection{Datasets}
+Name: 20180608\newline
+Dimension: $20 \times 20$\newline
+Range $g_2$: $[-4:-1.5]$ 51 values\newline
+Samples: 2200\newline
+\newline
+Name: 20180610\newline
+Dimension: $25 \times 25$\newline
+Range $g_2$: $[-4:-1.5]$ 51 values\newline
+Samples: 1152\newline
+\newline
+Name: 20180611\newline
+Dimension: $30 \times 30$\newline
+Range $g_2$: $[-4:-1.5]$ 51 values\newline
+Samples: 1152\newline
+
+\subsection{Action monitoring in $A$ and $B$ modes}
+Figure: \ref{fig:ABaction} \newline
+Dataset: 20180608\newline
+Data analysis script: \verb|20_ABaction_monitoring.py|\newline
+Gnuplot script:
+\begin{lstlisting}
+plot "20180608_varG_ABaction.txt" u 1:2 w lines title "{/Symbol r}^2", "20180608_varG_ABaction.txt" u 1:3 w lines title "(TrAB)^2", "20180608_varG_ABaction.txt" u 1:4 w lines title "TrA^2", "20180608_varG_ABaction.txt" u 1:5 w lines lt 3 dt 2 title "TrA^3", "20180608_varG_ABaction.txt" u 1:6 w lines lt 3 dt 4 title "TrA^4", "20180608_varG_ABaction.txt" u 1:7 w lines lt 4 title "TrB^2", "20180608_varG_ABaction.txt" u 1:8 w lines lt 4 dt 2 title "TrB^4", "20180608_varG_ABaction.txt" u 1:9 w lines lt 5 title "TrA^2B^2", "20180608_varG_ABaction.txt" u 1:10 w lines lt 6 title "TrABAB", "20180608_varG_ABaction.txt" u 1:11 w lines lt 7 title "TrB^2A"
+\end{lstlisting}
+
+\subsection{Shift of $\rho^2$ from stationary solution}
+Figure: \ref{fig:Wvar} \newline
+Dataset: 20180608\newline
+Data analysis script: \verb|20_soft_monitoring.py|\newline
+Gnuplot script:
+\begin{lstlisting}
+plot "20180608_varG_ALL.txt" u 1:3 w lines title "1/N Tr W^+ W", "20180608_varG_ALL.txt" u 1:2 w lines title "1/N^2 |TrW|^2", "20180608_varG_ALL.txt" u 1:4 w lines title "1/N TrB^2", "20180608_varG_ALL.txt" u 1:5 w lines title "1/N TrA^2", -x/8 lt 7 dt 2 title "-g/8"
+\end{lstlisting}
+
+\subsection{Scaling of $\Tr B^2$ and $\Tr B^4$}
+Figure: \ref{fig:trB24scal} \newline
+Dataset: 20180608, 20180610, 20180611\newline
+Data analysis script: \verb|20_ABaction_monitoring.py|\newline
+Gnuplot script:
+\begin{lstlisting}
+plot "20180608/20180608_varG_ABaction.txt" u 1:($8/20) w lines title "1/N TrB^4", "20180610/20180610_varG_ABaction.txt" u 1:($8/25) w lines notitle, "20180611/20180611_varG_ABaction.txt" u 1:($8/30) w lines notitle, "20180608/20180608_varG_ABaction.txt" u 1:($7/20) w lines lt 1 dt 2 title "1/N TrB^2", "20180610/20180610_varG_ABaction.txt" u 1:($7/25) w lines lt 2 dt 2 notitle, "20180611/20180611_varG_ABaction.txt" u 1:($7/30) w lines lt 3 dt 2 notitle
+\end{lstlisting}
+
+\subsection{$B$ modes matrix elements}
+Figure: \ref{fig:B2exp}, \ref{fig:B4exp} \newline
+Dataset: 20180608\newline
+Data analysis script: \verb|20_Bexp_monitoring.py|\newline
+Gnuplot script:
+\begin{lstlisting}
+plot "20180608_varG_B2exp.txt" u 1:2 title "|B_ii|^2", "20180608_varG_B2exp.txt" u 1:3 title "|B_ij|^2"
+\end{lstlisting}
+\begin{lstlisting}
+plot "20180608_varG_B4exp.txt" u 1:2 title "|B_{ii}|^4", "20180608_varG_B4exp.txt" u 1:3 title "|B_{ij}|^4"
+\end{lstlisting}
+\mbox{}\newline
+Figure: \ref{fig:Bij_ik_l} \newline
+Dataset: 20180608\newline
+Data analysis script: \verb|20_Bexp_monitoring.py|\newline
+Gnuplot script:
+\begin{lstlisting}
+plot "20180608_varG_Bij_ik_l.txt" u 1:2 title "E[ |B_{ij}|^2 |B_{il}|^2 ]", "20180608_varG_Bij_ik_l.txt" u 1:3 title "E[ |B_{ij}|^2 |B_{kl}|^2 ]"
+\end{lstlisting}
+\mbox{}\newline
+Figure: \ref{fig:Bstatind} \newline
+Dataset: 20180608\newline
+Data analysis script: \verb|20_Bexp_monitoring.py|\newline
+Gnuplot script:
+\begin{lstlisting}
+plot "20180608_varG_Bstatind.txt" u 1:2 title "E[|B_{ij}|^2|B_{kl}|^2] - E[|B_{ij}|^2]E[|B_{kl}|^2]
+\end{lstlisting}
+\mbox{}\newline
+Figure: \ref{fig:4Bexp} \newline
+Dataset: 20180608\newline
+Data analysis script: \verb|20_4Bexp_monitoring.py|\newline
+Gnuplot script:
+\begin{lstlisting}
+plot "20180608_varG_4Bexp.txt" u 1:2 title "real part", "20180608_varG_4Bexp.txt" u 1:3 title "imaginary part"
+\end{lstlisting}
+
+\newpage
+
+\subsection{Plots}
+\begin{figure}[hp]
+\centering
+\includegraphics[width=1\linewidth]{plots/W_various.pdf}
+\caption{Shift of $\rho^2$ (green line) from stationary solution (red dashed line). Matrix size 20x20.}
+\label{fig:Wvar}
+\end{figure}
+\begin{figure}[hp]
+\centering
+\includegraphics[angle=90, origin=c, width=1\linewidth]{plots/ABaction_monitoring.pdf}
+\caption{Monitoring of $A$ and $B$ modes in the action for matrix size 20x20. Dataset: 20180608}
+\label{fig:ABaction}
+\end{figure}
+\begin{figure}[hp]
+\centering
+\includegraphics[width=1\linewidth]{plots/trB24_scaling.pdf}
+\caption{Scaling of $\Tr B^2$ and $\Tr B^4$. Both quantities scale like $N$.}
+\label{fig:trB24scal}
+\end{figure}
+\begin{figure}[hp]
+\centering
+\includegraphics[width=1\linewidth]{plots/B2exp.pdf}
+\caption{Expectation value of $|B_{ii}|^2$ (purple) and $|B_{ij}|^2$ (green) versus $g_2$. Matrix size 20x20.}
+\label{fig:B2exp}
+\end{figure}
+\begin{figure}[hp]
+\centering
+\includegraphics[width=1\linewidth]{plots/B4exp.pdf}
+\caption{Expectation value of $|B_{ii}|^4$ (purple) and $|B_{ij}|^4$ (green) versus $g_2$. Matrix size 20x20.}
+\label{fig:B4exp}
+\end{figure}
+\begin{figure}[hp]
+\centering
+\includegraphics[width=1\linewidth]{plots/Bij_ik_l.pdf}
+\caption{Expectation value of $|B_{ij}|^2 |B_{il}|^2$ (purple) and $|B_{ij}|^2 |B_{kl}|^2$ (green) versus $g_2$. Matrix size 20x20.}
+\label{fig:Bij_ik_l}
+\end{figure}
+\begin{figure}[hp]
+\centering
+\includegraphics[width=1\linewidth]{plots/Bstatind.pdf}
+\caption{Statistical independence of matrix elements. $E[|B_{ij}|^2|B_{kl}|^2] - E[|B_{ij}|^2]E[|B_{kl}|^2]$ versus $g_2$. Matrix size 20x20.}
+\label{fig:Bstatind}
+\end{figure}
+\begin{figure}[hp]
+\centering
+\includegraphics[width=1\linewidth]{plots/4Bexp.pdf}
+\caption{Expectation value of $B_{kl} B_{lm} B_{mn} B_{nk}$ with, $m \neq k$ and $n \neq l$ versus $g_2$. Real part in purple, imaginary part in green. Matrix size 20x20.}
+\label{fig:4Bexp}
+\end{figure}
+\newpage
+
+\end{document}
