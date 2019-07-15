@@ -78,26 +78,31 @@ Dataset: 20180608\newline
 Data analysis script: \verb|20_Bexp_monitoring.py|\newline
 Gnuplot script:
 \begin{lstlisting}
-plot "20180608_varG_B2exp.txt" u 1:2 title "|B_ii|^2", "20180608_varG_B2exp.txt" u 1:3 title "|B_ij|^2"
+set key font ",11"
+plot "20180608_varG_B2exp.txt" u 1:2:3 w yerrorbars title "|B_{ii}|^2", "20180608_varG_B2exp.txt" u 1:4:5 w yerrorbars title "|B_{ij}|^2"
 \end{lstlisting}
 \begin{lstlisting}
-plot "20180608_varG_B4exp.txt" u 1:2 title "|B_{ii}|^4", "20180608_varG_B4exp.txt" u 1:3 title "|B_{ij}|^4"
+set key font ",11"
+plot "20180608_varG_B4exp.txt" u 1:2:3 w yerrorbars title "|B_{ii}|^4", "20180608_varG_B4exp.txt" u 1:4:5 w yerrorbars title "|B_{ij}|^4"
 \end{lstlisting}
 \mbox{}\newline
 Figure: \ref{fig:Bij_ik_l} \newline
 Dataset: 20180608\newline
-Data analysis script: \verb|20_Bexp_monitoring.py|\newline
+Data analysis script: \verb|20_Bij_ik_l_monitoring.py|\newline
 Gnuplot script:
 \begin{lstlisting}
-plot "20180608_varG_Bij_ik_l.txt" u 1:2 title "E[ |B_{ij}|^2 |B_{il}|^2 ]", "20180608_varG_Bij_ik_l.txt" u 1:3 title "E[ |B_{ij}|^2 |B_{kl}|^2 ]"
+set key font ",11"
+plot "20180608_varG_Bij_ik_l.txt" u 1:2:3 w yerrorbars title "E[ |B_{ij}|^2 |B_{il}|^2 ]", "20180608_varG_Bij_ik_l.txt" u 1:4:5 w yerrorbars title "E[ |B_{ij}|^2|B_{kl}|^2 ]"
 \end{lstlisting}
 \mbox{}\newline
 Figure: \ref{fig:Bstatind} \newline
 Dataset: 20180608\newline
-Data analysis script: \verb|20_Bexp_monitoring.py|\newline
+Data analysis script: \verb|20_Bstatind_monitoring.py|\newline
 Gnuplot script:
 \begin{lstlisting}
-plot "20180608_varG_Bstatind.txt" u 1:2 title "E[|B_{ij}|^2|B_{kl}|^2] - E[|B_{ij}|^2]E[|B_{kl}|^2]
+set title font ",11"
+set title "E[|B_{ij}|^2|B_{kl}|^2] - E[|B_{ij}|^2]E[|B_{kl}|^2]
+plot "20180608_varG_Bstatind.txt" u 1:2:3 w yerrorbars notitle
 \end{lstlisting}
 \mbox{}\newline
 Figure: \ref{fig:4Bexp} \newline
@@ -105,7 +110,11 @@ Dataset: 20180608\newline
 Data analysis script: \verb|20_4Bexp_monitoring.py|\newline
 Gnuplot script:
 \begin{lstlisting}
-plot "20180608_varG_4Bexp.txt" u 1:2 title "real part", "20180608_varG_4Bexp.txt" u 1:3 title "imaginary part"
+set title font ",11"
+set key font ",11"
+set key left bottom
+set title "E[ B_{kl} B_{lm} B_{mn} B_{nk} ] with m != k and n != l"
+plot "20180608_varG_4Bexp.txt" u 1:2:3 w yerrorbars title "real part", "20180608_varG_4Bexp.txt" u 1:4:5 w yerrorbars title "imaginary part"
 \end{lstlisting}
 
 \newpage
