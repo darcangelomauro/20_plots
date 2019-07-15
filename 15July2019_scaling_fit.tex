@@ -1,0 +1,215 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath,amscd}
+\usepackage[symbol]{footmisc}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[english]{babel}
+\linespread{1.25}
+\usepackage{listings}
+\lstset{
+basicstyle=\small\ttfamily,
+columns=flexible,
+breaklines=true
+}
+
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\D}{D}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\T}{\text{\scriptsize T}}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\begin{document}
+
+\section{Type $(2,0)$ geometry}
+
+\subsection{Datasets}
+Name: 20180608\newline
+Dimension: $20 \times 20$\newline
+Range $g_2$: $[-4:-1.5]$ 51 values\newline
+Samples: 2200\newline
+\newline
+Name: 20180610\newline
+Dimension: $25 \times 25$\newline
+Range $g_2$: $[-4:-1.5]$ 51 values\newline
+Samples: 1152\newline
+\newline
+Name: 20180611\newline
+Dimension: $30 \times 30$\newline
+Range $g_2$: $[-4:-1.5]$ 51 values\newline
+Samples: 1152\newline
+
+\subsection{$B$ modes matrix elements}
+Table: \ref{tab:NB2iiexp}, \ref{tab:NB2ijexp} \newline
+Dataset: 20180608, 20180610, 20180611\newline
+Data analysis script: \verb|20_NBexp_monitoring.py|\newline
+Gnuplot script:
+\begin{lstlisting}
+f(x) = m*x + q
+fit f(x) "20_varN_B2exp.txt" u (log($1)):(log($2)) via m, q
+fit f(x) "20_varN_B2exp.txt" u (log($1)):(log($6)) via m, q
+fit f(x) "20_varN_B2exp.txt" u (log($1)):(log($10)) via m, q
+fit f(x) "20_varN_B2exp.txt" u (log($1)):(log($4)) via m, q
+fit f(x) "20_varN_B2exp.txt" u (log($1)):(log($8)) via m, q
+fit f(x) "20_varN_B2exp.txt" u (log($1)):(log($12)) via m, q
+\end{lstlisting}
+\mbox{}\newline
+Table: \ref{tab:NB4iiexp}, \ref{tab:NB4ijexp} \newline
+Dataset: 20180608, 20180610, 20180611\newline
+Data analysis script: \verb|20_NBexp_monitoring.py|\newline
+Gnuplot script:
+\begin{lstlisting}
+f(x) = m*x + q
+fit f(x) "20_varN_B4exp.txt" u (log($1)):(log($2)) via m, q
+fit f(x) "20_varN_B4exp.txt" u (log($1)):(log($6)) via m, q
+fit f(x) "20_varN_B4exp.txt" u (log($1)):(log($10)) via m, q
+fit f(x) "20_varN_B4exp.txt" u (log($1)):(log($4)) via m, q
+fit f(x) "20_varN_B4exp.txt" u (log($1)):(log($8)) via m, q
+fit f(x) "20_varN_B4exp.txt" u (log($1)):(log($12)) via m, q
+\end{lstlisting}
+\mbox{}\newline
+Table: \ref{tab:NBijil}, \ref{tab:NBijkl} \newline
+Dataset: 20180608, 20180610, 20180611\newline
+Data analysis script: \verb|20_NBij_ik_l_monitoring.py|\newline
+Gnuplot script:
+\begin{lstlisting}
+f(x) = m*x + q
+fit f(x) "20_varN_Bij_ik_l.txt" u (log($1)):(log($2)) via m, q
+fit f(x) "20_varN_Bij_ik_l.txt" u (log($1)):(log($6)) via m, q
+fit f(x) "20_varN_Bij_ik_l.txt" u (log($1)):(log($10)) via m, q
+fit f(x) "20_varN_Bij_ik_l.txt" u (log($1)):(log($4)) via m, q
+fit f(x) "20_varN_Bij_ik_l.txt" u (log($1)):(log($8)) via m, q
+fit f(x) "20_varN_Bij_ik_l.txt" u (log($1)):(log($12)) via m, q
+\end{lstlisting}
+\mbox{}\newline
+Table: \ref{tab:NBstatind} \newline
+Dataset: 20180608, 20180610, 20180611\newline
+Data analysis script: \verb|20_NBstatind_monitoring.py|\newline
+Gnuplot script:
+\begin{lstlisting}
+f(x) = m*x + q
+fit f(x) "20_varN_Bstatind.txt" u (log($1)):(log(abs($2))) via m, q
+fit f(x) "20_varN_Bstatind.txt" u (log($1)):(log(abs($4))) via m, q
+fit f(x) "20_varN_Bstatind.txt" u (log($1)):(log(abs($6))) via m, q
+\end{lstlisting}
+\mbox{}\newline
+Table: \ref{tab:N4Bexp} \newline
+Dataset: 20180608, 20180610, 20180611\newline
+Data analysis script: \verb|20_N4Bexp_monitoring.py|\newline
+Gnuplot script:
+\begin{lstlisting}
+f(x) = m*x + q
+fit f(x) "20_varN_4Bexp.txt" u (log($1)):(log(abs($2))) via m, q
+fit f(x) "20_varN_4Bexp.txt" u (log($1)):(log(abs($6))) via m, q
+fit f(x) "20_varN_4Bexp.txt" u (log($1)):(log(abs($10))) via m, q
+\end{lstlisting}
+\mbox{}\newline
+\begin{table}[hp]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+$g_2$ & Slope & Error \\ \hline
+-1.5 & -0.97 & 0.02 \\ \hline
+-2.7 & -0.97 & 0.05 \\ \hline
+-4 & -0.96 & 0.01 \\ \hline
+\end{tabular}
+\caption{Linear fit of $\log(N)$ vs $\log(E[ |B_{ii}|^2 ])$.}
+\label{tab:NB2iiexp}
+\end{table}
+\begin{table}[hp]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+$g_2$ & Slope & Error \\ \hline
+-1.5 & -1.001 & 0.004 \\ \hline
+-2.7 & -0.994 & 0.002 \\ \hline
+-4 & -0.997 & 0.004 \\ \hline
+\end{tabular}
+\caption{Linear fit of $\log(N)$ vs $\log(E[ |B_{ij}|^2 ])$.}
+\label{tab:NB2ijexp}
+\end{table}
+\begin{table}[hp]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+$g_2$ & Slope & Error \\ \hline
+-1.5 & 0.89 & 0.16 \\ \hline
+-2.7 & 0.78 & 0.14 \\ \hline
+-4 & 0.82 & 0.23 \\ \hline
+\end{tabular}
+\caption{Linear fit of $\log(N)$ vs $\log(E[ |B_{ii}|^4 ])$.}
+\label{tab:NB4iiexp}
+\end{table}
+\begin{table}[hp]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+$g_2$ & Slope & Error \\ \hline
+-1.5 & 1.39 & 0.23 \\ \hline
+-2.7 & 1.22 & 0.33 \\ \hline
+-4 & 0.97 & 0.06 \\ \hline
+\end{tabular}
+\caption{Linear fit of $\log(N)$ vs $\log(E[ |B_{ij}|^4 ])$.}
+\label{tab:NB4ijexp}
+\end{table}
+\newpage
+\begin{table}[hp]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+$g_2$ & Slope & Error \\ \hline
+-1.5 & -1.994 & 0.009 \\ \hline
+-2.7 & -1.985 & 0.008 \\ \hline
+-4 & -1.981 & 0.009 \\ \hline
+\end{tabular}
+\caption{Linear fit of $\log(N)$ vs $\log(E[ |B_{ij}|^2  |B_{il}|^2   ])$.}
+\label{tab:NBijil}
+\end{table}
+\begin{table}[hp]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+$g_2$ & Slope & Error \\ \hline
+-1.5 & -2.001 & 0.008 \\ \hline
+-2.7 & -1.984 & 0.005 \\ \hline
+-4 & -1.992 & 0.009 \\ \hline
+\end{tabular}
+\caption{Linear fit of $\log(N)$ vs $\log(E[ |B_{ij}|^2  |B_{kl}|^2   ])$.}
+\label{tab:NBijkl}
+\end{table}
+\begin{table}[hp]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+$g_2$ & Slope & Error \\ \hline
+-1.5 & -3.7 & 0.8 \\ \hline
+-2.7 & -3.8 & 2.5 \\ \hline
+-4 & -6.1 & 1.2 \\ \hline
+\end{tabular}
+\caption{Linear fit of $\log(N)$ vs $\log(|E[ |B_{ij}|^2  |B_{kl}|^2 ] - E[ |B_{ij}|^2 ] E[ |B_{kl}|^2 ]|)$.}
+\label{tab:NBstatind}
+\end{table}
+\begin{table}[hp]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+$g_2$ & Slope & Error \\ \hline
+-1.5 & -2.95 & 0.02 \\ \hline
+-2.7 & -2.7 & 1.8 \\ \hline
+-4 & -2.91 & 0.06 \\ \hline
+\end{tabular}
+\caption{Linear fit of $\log(N)$ vs $\log(|E[ B_{kl} B_{lm} B_{mn} B_{nk} ]|)$.}
+\label{tab:N4Bexp}
+\end{table}
+
+
+
+
+
+\end{document}
