@@ -1,0 +1,258 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath,amscd}
+\usepackage[symbol]{footmisc}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[english]{babel}
+\linespread{1.25}
+\usepackage{listings}
+\lstset{
+basicstyle=\small\ttfamily,
+columns=flexible,
+breaklines=true
+}
+
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\D}{D}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\T}{\text{\scriptsize T}}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\begin{document}
+
+\section{Type $(2,0)$ geometry}
+
+\subsection{Datasets}
+Name: 20180608\newline
+Dimension: $20 \times 20$\newline
+Range $g_2$: $[-4:-1.5]$ 51 values\newline
+Samples: 2200\newline
+\newline
+Name: 20180610\newline
+Dimension: $25 \times 25$\newline
+Range $g_2$: $[-4:-1.5]$ 51 values\newline
+Samples: 1152\newline
+\newline
+Name: 20180611\newline
+Dimension: $30 \times 30$\newline
+Range $g_2$: $[-4:-1.5]$ 51 values\newline
+Samples: 1152\newline
+
+\subsection{$A$ modes matrix elements}
+Table: \ref{tab:NA2iiexp}, \ref{tab:NA2ijexp} \newline
+Dataset: 20180608, 20180610, 20180611\newline
+Data analysis script: \verb|20_NAexp_monitoring.py|\newline
+Gnuplot script:
+\begin{lstlisting}
+f(x) = m*x + q
+fit f(x) "20_varN_A2exp.txt" u (log($1)):(log($2)) via m, q
+fit f(x) "20_varN_A2exp.txt" u (log($1)):(log($6)) via m, q
+fit f(x) "20_varN_A2exp.txt" u (log($1)):(log($10)) via m, q
+fit f(x) "20_varN_A2exp.txt" u (log($1)):(log($4)) via m, q
+fit f(x) "20_varN_A2exp.txt" u (log($1)):(log($8)) via m, q
+fit f(x) "20_varN_A2exp.txt" u (log($1)):(log($12)) via m, q
+\end{lstlisting}
+\mbox{}\newline
+Table: \ref{tab:NA4iiexp}, \ref{tab:NA4ijexp} \newline
+Dataset: 20180608, 20180610, 20180611\newline
+Data analysis script: \verb|20_NAexp_monitoring.py|\newline
+Gnuplot script:
+\begin{lstlisting}
+f(x) = m*x + q
+fit f(x) "20_varN_A4exp.txt" u (log($1)):(log($2)) via m, q
+fit f(x) "20_varN_A4exp.txt" u (log($1)):(log($6)) via m, q
+fit f(x) "20_varN_A4exp.txt" u (log($1)):(log($10)) via m, q
+fit f(x) "20_varN_A4exp.txt" u (log($1)):(log($4)) via m, q
+fit f(x) "20_varN_A4exp.txt" u (log($1)):(log($8)) via m, q
+fit f(x) "20_varN_A4exp.txt" u (log($1)):(log($12)) via m, q
+\end{lstlisting}
+\mbox{}\newline
+Table: \ref{tab:NAijil}, \ref{tab:NAijkl} \newline
+Dataset: 20180608, 20180610, 20180611\newline
+Data analysis script: \verb|20_NAij_ik_l_monitoring.py|\newline
+Gnuplot script:
+\begin{lstlisting}
+f(x) = m*x + q
+fit f(x) "20_varN_Aij_ik_l.txt" u (log($1)):(log($2)) via m, q
+fit f(x) "20_varN_Aij_ik_l.txt" u (log($1)):(log($6)) via m, q
+fit f(x) "20_varN_Aij_ik_l.txt" u (log($1)):(log($10)) via m, q
+fit f(x) "20_varN_Aij_ik_l.txt" u (log($1)):(log($4)) via m, q
+fit f(x) "20_varN_Aij_ik_l.txt" u (log($1)):(log($8)) via m, q
+fit f(x) "20_varN_Aij_ik_l.txt" u (log($1)):(log($12)) via m, q
+\end{lstlisting}
+\mbox{}\newline
+Table: \ref{tab:NAstatind} \newline
+Dataset: 20180608, 20180610, 20180611\newline
+Data analysis script: \verb|20_NAstatind_monitoring.py|\newline
+Gnuplot script:
+\begin{lstlisting}
+f(x) = m*x + q
+fit f(x) "20_varN_Astatind.txt" u (log($1)):(log(abs($2))) via m, q
+fit f(x) "20_varN_Astatind.txt" u (log($1)):(log(abs($4))) via m, q
+fit f(x) "20_varN_Astatind.txt" u (log($1)):(log(abs($6))) via m, q
+\end{lstlisting}
+\mbox{}\newline
+Table: \ref{tab:N4Aexp} \newline
+Dataset: 20180608, 20180610, 20180611\newline
+Data analysis script: \verb|20_N4Aexp_monitoring.py|\newline
+Gnuplot script:
+\begin{lstlisting}
+f(x) = m*x + q
+fit f(x) "20_varN_4Aexp.txt" u (log($1)):(log(abs($2))) via m, q
+fit f(x) "20_varN_4Aexp.txt" u (log($1)):(log(abs($6))) via m, q
+fit f(x) "20_varN_4Aexp.txt" u (log($1)):(log(abs($10))) via m, q
+\end{lstlisting}
+\mbox{}\newline
+Table: \ref{tab:NABijij} \newline
+Dataset: 20180608, 20180610, 20180611\newline
+Data analysis script: \verb|20_NABijij_monitoring.py|\newline
+Gnuplot script:
+\begin{lstlisting}
+f(x) = m*x + q
+fit f(x) "20_varN_ABijij.txt" u (log($1)):(log($2)) via m, q
+fit f(x) "20_varN_ABijij.txt" u (log($1)):(log($4)) via m, q
+fit f(x) "20_varN_ABijij.txt" u (log($1)):(log($6)) via m, q
+\end{lstlisting}
+Table: \ref{tab:NABijkl} \newline
+Dataset: 20180608, 20180610, 20180611\newline
+Data analysis script: \verb|20_NABijkl_monitoring.py|\newline
+Gnuplot script:
+\begin{lstlisting}
+f(x) = m*x + q
+fit f(x) "20_varN_ABijkl.txt" u (log($1)):(log($2)) via m, q
+fit f(x) "20_varN_ABijkl.txt" u (log($1)):(log($4)) via m, q
+fit f(x) "20_varN_ABijkl.txt" u (log($1)):(log($6)) via m, q
+\end{lstlisting}
+\begin{table}[hp]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+$g_2$ & Slope & Error \\ \hline
+-1.5 & -0.94 & 0.01 \\ \hline
+-2.7 & -0.95 & 0.03 \\ \hline
+-4 & -0.94 & 0.06 \\ \hline
+\end{tabular}
+\caption{Linear fit of $\log(N)$ vs $\log(E[ |A_{ii}|^2 ])$.}
+\label{tab:NA2iiexp}
+\end{table}
+\begin{table}[hp]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+$g_2$ & Slope & Error \\ \hline
+-1.5 & -0.99719 & 0.00007 \\ \hline
+-2.7 & -0.98 & 0.03 \\ \hline
+-4 & -0.98 & 0.02 \\ \hline
+\end{tabular}
+\caption{Linear fit of $\log(N)$ vs $\log(E[ |A_{ij}|^2 ])$.}
+\label{tab:NA2ijexp}
+\end{table}
+\begin{table}[hp]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+$g_2$ & Slope & Error \\ \hline
+-1.5 & -1.85 & 0.09 \\ \hline
+-2.7 & -1.88 & 0.05 \\ \hline
+-4 & -1.8 & 0.1 \\ \hline
+\end{tabular}
+\caption{Linear fit of $\log(N)$ vs $\log(E[ |A_{ii}|^4 ])$.}
+\label{tab:NA4iiexp}
+\end{table}
+\begin{table}[hp]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+$g_2$ & Slope & Error \\ \hline
+-1.5 & -1.9876 & 0.0005 \\ \hline
+-2.7 & -1.97 & 0.02 \\ \hline
+-4 & -1.96 & 0.02 \\ \hline
+\end{tabular}
+\caption{Linear fit of $\log(N)$ vs $\log(E[ |A_{ij}|^4 ])$.}
+\label{tab:NA4ijexp}
+\end{table}
+\newpage
+\begin{table}[hp]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+$g_2$ & Slope & Error \\ \hline
+-1.5 & -1.988 & 0.001 \\ \hline
+-2.7 & -1.97 & 0.02 \\ \hline
+-4 & -1.96 & 0.03 \\ \hline
+\end{tabular}
+\caption{Linear fit of $\log(N)$ vs $\log(E[ |A_{ij}|^2  |A_{il}|^2   ])$.}
+\label{tab:NAijil}
+\end{table}
+\begin{table}[hp]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+$g_2$ & Slope & Error \\ \hline
+-1.5 & -1.9927 & 0.0002 \\ \hline
+-2.7 & -1.97 & 0.02 \\ \hline
+-4 & -1.96 & 0.03 \\ \hline
+\end{tabular}
+\caption{Linear fit of $\log(N)$ vs $\log(E[ |A_{ij}|^2  |A_{kl}|^2   ])$.}
+\label{tab:NAijkl}
+\end{table}
+\begin{table}[hp]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+$g_2$ & Slope & Error \\ \hline
+-1.5 & -3.6 & 0.3 \\ \hline
+-2.7 & -4.16 & 0.01 \\ \hline
+-4 & -0.4 & 0.6 \\ \hline
+\end{tabular}
+\caption{Linear fit of $\log(N)$ vs $\log(|E[ |A_{ij}|^2  |A_{kl}|^2 ] - E[ |A_{ij}|^2 ] E[ |A_{kl}|^2 ]|)$.}
+\label{tab:NAstatind}
+\end{table}
+\begin{table}[hp]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+$g_2$ & Slope & Error \\ \hline
+-1.5 & -2.93 & 0.04 \\ \hline
+-2.7 & -2.5 & 0.2 \\ \hline
+-4 & 0 & 2 \\ \hline
+\end{tabular}
+\caption{Linear fit of $\log(N)$ vs $\log(|E[ A_{kl} A_{lm} A_{mn} A_{nk} ]|)$.}
+\label{tab:N4Aexp}
+\end{table}
+\begin{table}[hp]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+$g_2$ & Slope & Error \\ \hline
+-1.5 & -1.979 & 0.005 \\ \hline
+-2.7 & -1.997 & 0.022 \\ \hline
+-4 & -1.96 & 0.03 \\ \hline
+\end{tabular}
+\caption{Linear fit of $\log(N)$ vs $\log(E[ |A_{ij}|^2  |B_{ij}|^2   ])$.}
+\label{tab:NABijij}
+\end{table}
+\begin{table}[hp]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+$g_2$ & Slope & Error \\ \hline
+-1.5 & -2.000 & 0.004 \\ \hline
+-2.7 & -1.97 & 0.01 \\ \hline
+-4 & -1.98 & 0.02 \\ \hline
+\end{tabular}
+\caption{Linear fit of $\log(N)$ vs $\log(E[ |A_{ij}|^2  |B_{kl}|^2   ])$.}
+\label{tab:NABijkl}
+\end{table}
+
+
+
+
+\end{document}
